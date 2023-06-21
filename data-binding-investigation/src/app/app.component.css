@@ -1,0 +1,17 @@
+.dark {
+    background-color: black;
+    color: white;
+}
+
+
+.light {
+    background-color: white;
+    color: black;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
