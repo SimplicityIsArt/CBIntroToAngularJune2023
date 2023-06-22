@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { MemberComponent } from './member/member.component';
 import { MemberDialogComponent } from './member-dialog/member-dialog.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { MemberDialogComponent } from './member-dialog/member-dialog.component';
   ],
   imports: [
     BrowserModule, 
-    FormsModule
+    FormsModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

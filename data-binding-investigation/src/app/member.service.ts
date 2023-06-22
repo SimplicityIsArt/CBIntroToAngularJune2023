@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MemberHttpService } from './member-http.service';
 import { Member } from './member.model';
 
 @Injectable({
@@ -6,14 +7,19 @@ import { Member } from './member.model';
 })
 export class MemberService {
 
-
   members = [
     new Member(1, "Alice", "alice@gmail.com", false), 
     new Member(2, "Bob", "bob@gmail.com", true),
     new Member(3, "Carol", "carol@gmail.com", false) 
   ];
 
-  constructor() { }
+  constructor(private memberHttpService: MemberHttpService) { 
+
+    this.memberHttpService.getAllMembers()
+      .subscribe((members: Member[]) => {
+        this.members = members;
+      });
+  }
 
   getAll(): Member[] {
     return this.members;
