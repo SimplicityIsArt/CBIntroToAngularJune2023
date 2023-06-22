@@ -5,9 +5,14 @@ import { Component } from '@angular/core';
   template: `
     <div>
       <h1>{{ title | titlecase }}</h1>
-      <a routerLink = "home">Home</a> |
-      <a routerLink = "about">About</a> |
-      <a routerLink = "contact">Contact</a> |
+      <a routerLink = "home"
+        routerLinkActive="activeLink">Home</a> |
+      <a routerLink = "about"
+        routerLinkActive="activeLink">About</a> |
+      <a routerLink = "contact"
+        routerLinkActive="activeLink">Contact</a> |
+      <a routerLink = "members"
+        routerLinkActive="activeLink">Members</a> |        
       <hr>
       <router-outlet></router-outlet>
     </div>

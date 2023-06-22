@@ -6,17 +6,25 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { MembersPageComponent } from './members-page/members-page.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { MemberDetailPageComponent } from './member-detail-page/member-detail-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     AboutPageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    MembersPageComponent,
+    MemberDetailPageComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    HttpClientModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
