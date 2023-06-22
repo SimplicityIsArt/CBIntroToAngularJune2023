@@ -17,7 +17,9 @@ export class MemberService {
 
     this.memberHttpService.getAllMembers()
       .subscribe((members: Member[]) => {
+
         this.members = members;
+
       });
   }
 
@@ -26,16 +28,22 @@ export class MemberService {
   }
 
   update(memberToUpdate: Member) {
-    let index = this.members.findIndex(member=>member.id == memberToUpdate.id);
-    this.members.splice(index, 1, memberToUpdate);
+
+    this.memberHttpService.update(memberToUpdate)
+      .subscribe((updatedMember)=> {
+        let index = this.members.findIndex(member=>member.id == memberToUpdate.id);
+        this.members.splice(index, 1, updatedMember);
+      });
   }
 
   delete(id: number) {
-    let index = this.members.findIndex(member=>member.id == id);
-    this.members.splice(index, 1);
-    
-  }
 
+    this.memberHttpService.delete(id)
+      .subscribe(()=>{
+        let index = this.members.findIndex(member=>member.id == id);
+        this.members.splice(index, 1);
+      });
+  }
   /**
    * 
    * @param memberToAdd 
@@ -45,14 +53,16 @@ export class MemberService {
 
     console.log("running the add");
     // find maximum id from the current list
-    let maxId = this.members.reduce(
-      (max, current) => current.id > max ? current.id : max, 
-      this.members.length > 0 ? this.members[0].id : 0);
+    //let maxId = this.members.reduce(
+    //  (max, current) => current.id > max ? current.id : max, 
+    //  this.members.length > 0 ? this.members[0].id : 0);
   
-    memberToAdd.id = maxId + 1;
-    this.members.push(memberToAdd);
+    //memberToAdd.id = maxId + 1;
 
-    return memberToAdd;
+    this.memberHttpService.add(memberToAdd)
+      .subscribe(addedMember => {
+        this.members.push(addedMember);
+      })
+      return memberToAdd;
   }
-
 }
