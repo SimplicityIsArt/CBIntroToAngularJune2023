@@ -6,6 +6,12 @@
       "email": "alice@gmail.com",
       "active": false
     },
+        {
+      "id": 2,
+      "name": "Bob",
+      "email": "bob@gmail.com",
+      "active": false
+    },
     {
       "id": 3,
       "name": "Carol!!qewerew",
