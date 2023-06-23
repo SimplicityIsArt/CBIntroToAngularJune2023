@@ -29,7 +29,7 @@ export class MemberDetailPageComponent implements OnInit {
       .subscribe(params => {
         this.id = params["id"];
         this.member = <Member> this.memberService.get(this.id);
-      })
+      });
 
   }
 }

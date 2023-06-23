@@ -8,27 +8,9 @@
     },
     {
       "id": 3,
-      "name": "Carol!!",
+      "name": "Carol!!qewerew",
       "email": "carol@gmail.com",
       "active": false
-    },
-    {
-      "id": 4,
-      "name": "Dan",
-      "email": "dan@gmail.com",
-      "active": true
-    },
-    {
-      "id": 5,
-      "name": "Eve",
-      "email": "eve@gmail.com",
-      "active": true
-    },
-    {
-      "id": 6,
-      "name": "new",
-      "email": "new@gmail.com",
-      "active": true
     }
   ]
 }
