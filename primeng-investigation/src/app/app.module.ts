@@ -18,6 +18,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { MembersPageComponent } from './members-page/members-page.component';
+import { MemberHttpService } from './member-http.service';
 
 @NgModule({
   declarations: [
@@ -29,18 +30,18 @@ import { MembersPageComponent } from './members-page/members-page.component';
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule, 
-    AppRoutingModule, 
-    HttpClientModule, 
-    FormsModule, 
-    ButtonModule, 
-    AccordionModule, 
-    MenubarModule, 
-    ConfirmDialogModule, 
-    ToastModule, 
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ButtonModule,
+    AccordionModule,
+    MenubarModule,
+    ConfirmDialogModule,
+    ToastModule,
     TableModule
   ],
-  providers: [],
+  providers: [MemberHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
