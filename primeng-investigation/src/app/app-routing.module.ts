@@ -7,9 +7,9 @@ import { MembersPageComponent } from './members-page/members-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
-  { path: 'home', component: HomePageComponent }, 
-  { path: 'about', component: AboutPageComponent }, 
-  { path: 'contact', component: ContactPageComponent }, 
+  { path: 'home', component: HomePageComponent },
+  { path: 'about', component: AboutPageComponent },
+  { path: 'contact', component: ContactPageComponent },
   { path: 'members', component: MembersPageComponent }
 ];
 
