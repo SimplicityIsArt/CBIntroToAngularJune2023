@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Member } from './member.model';
 
 @Injectable({
@@ -18,18 +19,32 @@ export class MemberHttpService {
   }
 
   getAllMembers(): Observable<Member[]> {
-    return this.http.get<Member[]>(this.url);
+    return this.http.get<Member[]>(this.url).pipe(
+      catchError(this.handleError)
+    );
   }
 
   delete(id: number): Observable<{}> {
-    return this.http.delete(`${this.url}/${id}`);
+    return this.http.delete(`${this.url}/${id}`).pipe(
+      catchError(this.handleError)
+    );
   }
 
   add(member: Member): Observable<Member> {
-    return this.http.post<Member>(this.url, member);
+    return this.http.post<Member>(this.url, member).pipe(
+      catchError(this.handleError)
+    );
   }
 
   update(member: Member): Observable<Member> {
-    return this.http.put<Member>(`${this.url}/${member.id}`, member);
+    return this.http.put<Member>(`${this.url}/${member.id}`, member).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  // error handler
+  private handleError(error: any) {
+    console.error('Something went wrong: ', error);
+    return throwError(error.message || 'Internal server error. Please try again later.');
   }
 }
