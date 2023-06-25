@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { MemberHttpService } from './member-http.service';
-import { Member } from './member.model';
+import { MemberHttpService } from './interfaces/member-http.service';
 import { Observable } from 'rxjs';
+import { IMember } from './members-page/member.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,11 @@ export class MemberService {
 
   constructor(private memberHttpService: MemberHttpService) { }
 
-  getAll(): Observable<Member[]> {
+  getAll(): Observable<IMember[]> {
     return this.memberHttpService.getAllMembers();
   }
 
-  update(memberToUpdate: Member): Observable<Member> {
+  update(memberToUpdate: IMember): Observable<IMember> {
     return this.memberHttpService.update(memberToUpdate);
   }
 
@@ -22,7 +22,7 @@ export class MemberService {
     return this.memberHttpService.delete(id);
   }
 
-  add(memberToAdd: Member): Observable<Member> {
+  add(memberToAdd: IMember): Observable<IMember> {
     return this.memberHttpService.add(memberToAdd);
   }
 }

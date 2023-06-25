@@ -1,22 +1,10 @@
 {
   "members": [
     {
-      "id": 3,
-      "name": "aaaaaaaaaaa",
-      "email": "xkscr@gmail.com",
-      "active": false
-    },
-    {
-      "id": 4,
-      "name": "Rdezy",
-      "email": "rdezy@gmail.com",
-      "active": true
-    },
-    {
       "id": 5,
       "name": "Wbbot",
-      "email": "wbbot@gmail.com",
-      "active": true
+      "email": "123412341234",
+      "active": false
     },
     {
       "id": 6,

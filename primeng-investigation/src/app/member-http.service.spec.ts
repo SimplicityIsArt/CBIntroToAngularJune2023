@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MemberHttpService } from './member-http.service';
+import { MemberHttpService } from './interfaces/member-http.service';
 
 describe('MemberHttpService', () => {
   let service: MemberHttpService;
