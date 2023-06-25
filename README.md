@@ -53,10 +53,22 @@ Then open the app on **http://localhost:4200/members**, to ensure it's working. 
   
   
    **Done** [ Commit - This commit includes all the improvements mentioned thus far.](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/18b8500e20a1c3896593a6ab076eb1fb474423c4)
+
+ ##NOTES:
+  ## Possible future improvements, suggestions and notes ( for this or more advanced apps ).
+  **code:**
+  
+  1. Refactor to **load data in a more user friendly way**. - e.g. **Pagination** or **infinite scrolling**. ( This should suffice for even very large data sets ).
+  2. Set up proper **Testing** - unit, integration, etc.
+       **NOTE:** If we need to **consume from multiple data sources** in the future - **Implement this using Facade Pattern**. This will be useful in our larger apps. ;-)
+  **Build:**
+
+  1. Set up **Environments** and separate out hard coded stuff to **Configs** using best practices. This can be integrated into the build pipelines.
+  2. Improve developer experience by makiing it more efficient.
+     For example, in the **build process** ```ng build```, the output from **dist** folder could be pointed to **rest-api/public** directly.
+     Then it can be served directly when the app is built, without having to manually copy the buld artifacts to the json-server "public" folder. ( **develepment build config** )
+     
+ ADENDUM: **Realtime comminucation, server-side data streaming, SSE( server-side events), etc** are out of scope here but could be used for certain use cases, if the above does not suffice to fulfill any requirements we may have. ( example, Realtime Dashboards, Chat capability, Change Notifications when underlying data changes,and so on,  etc.....).
+
+ ## All the best guys, I hope you found this useful, James. :-D
  
-  ## Possible future improvements
-  1. Set up **Environments** and separate out hard coded stuff to **Configs** using best practices
-  2. Set up proper **Testing**
-  3. Refactor to implement **Lazy Loading** properly.
-  4. **Build** - Point ```ng build``` output from **dist** folder to **rest-api/public** directly, as a step, in the build config.
-     So it can be served directly when the app is built without having to transfer files
