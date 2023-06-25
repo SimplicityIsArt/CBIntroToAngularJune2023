@@ -35,18 +35,26 @@ Then open the app on **http://localhost:4200/members**, to ensure it's working. 
  You can see each of the **incremental improvements** by looking at the commits and the accompanying messages.
  **Each individual commit** is at a point which can be built and run individually, if you'd like to examine the refactoring steps more closely. Enjoy!
 
-## Next Improvements 
+## Next Improvements ( in progress )
+ 
   Obviously the **MembersPageComponent** needs a bit of work to
-  1. Consume the improved Service properly
-  2. **Improve encapsulation** ( right now members is being operated on directly!:/ )
-  3. **Implement SRP for properly structured code**. Right now, the component is responsible for interacting with the service, handling UI logic, and dealing with messaging (toast notifications).
+  ( Prep-work )
+  1. Prepare services for proper consumption => ( Done ) - [ see commit](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/a73fa9d4f331c35b60887056336ce5ec54a5e8f9)
+
+  3. **Improve encapsulation** ( right now members is being operated on directly!:/ )
+  4. **Implement SRP for properly structured code**. Right now, the component is responsible for interacting with the service, handling UI logic, and dealing with messaging (toast notifications).
     This all needs to be refactored.
-  4. **Proper error handling**
-  5. Set up **enviroments** and separate out hard coded stuff to **configs** using best practices
+  5. **Proper error handling**
+  
+  **Done**  [Update component (MemberPage)](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/5b4b9429597a2de2791f5dc1ce86e89eb53a831e)
+
+
+	
+	
  
   ## Possible future improvements
-  1. Set up proper **testing**
-  2. Refactor to implement **Lazy Loading** propely.
-  
+  1. Set up **environments** and separate out hard coded stuff to **configs** using best practices
+  2. Set up proper **testing**
+  2. Refactor to implement **Lazy Loading** properly.
 
   
