@@ -35,7 +35,7 @@ Then open the app on **http://localhost:4200/members**, to ensure it's working. 
  You can see each of the **incremental improvements** by looking at the commits and the accompanying messages.
  **Each individual commit** is at a point which can be built and run individually, if you'd like to examine the refactoring steps more closely. Enjoy!
 
-## Next Improvements ( in progress )
+## Next Improvements  ~~( in progress )~~ ( Completed )
  
   Obviously the **MembersPageComponent** needs a bit of work to
   ( Prep-work )
@@ -46,15 +46,12 @@ Then open the app on **http://localhost:4200/members**, to ensure it's working. 
     This all needs to be refactored.
   5. **Proper error handling**
   
-  **Done**  [Update component (MemberPage)](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/5b4b9429597a2de2791f5dc1ce86e89eb53a831e)
+  **Done**  [Update component (MemberPage) - Commit](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/5b4b9429597a2de2791f5dc1ce86e89eb53a831e)
 
-
-	
-	
  
   ## Possible future improvements
-  1. Set up **environments** and separate out hard coded stuff to **configs** using best practices
-  2. Set up proper **testing**
-  2. Refactor to implement **Lazy Loading** properly.
-
-  
+  1. Set up **Environments** and separate out hard coded stuff to **Configs** using best practices
+  2. Set up proper **Testing**
+  3. Refactor to implement **Lazy Loading** properly.
+  4. **Build** - Point ```ng build``` output from **dist** folder to **rest-api/public** directly, as a step, in the build config.
+     So it can be served directly when the app is built without having to transfer files
