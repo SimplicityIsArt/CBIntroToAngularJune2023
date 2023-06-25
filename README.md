@@ -39,15 +39,20 @@ Then open the app on **http://localhost:4200/members**, to ensure it's working. 
  
   Obviously the **MembersPageComponent** needs a bit of work to
   ( Prep-work )
-  1. Prepare services for proper consumption => ( Done ) - [ see commit](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/a73fa9d4f331c35b60887056336ce5ec54a5e8f9)
+  1. Prepare services for proper consumption => ( Done ) - [ Commit.](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/a73fa9d4f331c35b60887056336ce5ec54a5e8f9)
 
   3. **Improve encapsulation** ( right now members is being operated on directly!:/ )
   4. **Implement SRP for properly structured code**. Right now, the component is responsible for interacting with the service, handling UI logic, and dealing with messaging (toast notifications).
     This all needs to be refactored.
-  5. **Proper error handling**
+  5. Proper error handling
   
-  **Done**  [Update component (MemberPage) - Commit](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/5b4b9429597a2de2791f5dc1ce86e89eb53a831e)
+  **Done**  [Commit - Update component (MemberPage).](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/5b4b9429597a2de2791f5dc1ce86e89eb53a831e)
 
+  6. Replace all Member Model objects, used for indicating the shape of the data transferred, with interface "IMember" which is much better for obvious reasons.
+  7. Update to error handling to clarify stuff and fix something.
+  
+  
+   **Done** [ Commit - This commit includes all the improvements mentioned thus far.](https://github.com/SimplicityIsArt/CBIntroToAngularJune2023/commit/18b8500e20a1c3896593a6ab076eb1fb474423c4)
  
   ## Possible future improvements
   1. Set up **Environments** and separate out hard coded stuff to **Configs** using best practices
