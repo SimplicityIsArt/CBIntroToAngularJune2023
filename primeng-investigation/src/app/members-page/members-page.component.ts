@@ -1,59 +1,85 @@
-import { Component, OnInit } from '@angular/core';
-import { Member } from '../member.model';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MemberService } from '../member.service';
-import { MessageService } from 'primeng/api';
-
+import { ConfirmationService, MessageService, SelectItem } from 'primeng/api';
+import { Member } from '../member.model';
 
 @Component({
   selector: 'app-members-page',
   templateUrl: './members-page.component.html',
-  styleUrls: ['./members-page.component.css'], 
-  providers: [ MessageService ]
+  styleUrls: ['./members-page.component.css'],
+  providers: [MessageService, ConfirmationService]
 })
 export class MembersPageComponent implements OnInit {
+  @ViewChild('cd') confirmDialog: any;
 
+  members: Member[] = [];
+  statuses: SelectItem[] = [];
   clonedMembers: { [s: string]: Member } = {};
-  members!:Member[];
 
-  constructor(public memberService: MemberService, 
-              public messageService: MessageService) {
-    
-  }
+  constructor(
+    private memberService: MemberService,
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
+  ) {}
+
   ngOnInit(): void {
-    this.members = this.memberService.getAll();
+    this.memberService.getAll().subscribe({
+      next: (members) => (this.members = members),
+      error: (error) => console.error('Error: ' + error)
+    });
+
+    this.statuses = [
+      { label: 'Active', value: true },
+      { label: 'Inactive', value: false }
+    ];
   }
 
   onRowEditInit(member: Member) {
-    this.clonedMembers['' + member.id] = { ...member };
+    this.clonedMembers[member.id] = { ...member };
   }
 
   onRowEditSave(member: Member) {
-
-    delete this.clonedMembers['' + member.id];
-    //this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Product is updated' });
-    
-    this.memberService.update(member)
- 
-    this.messageService.add({
-      severity: 'info', 
-      summary: 'Saved', 
-      detail: 'Member record saved'
-    });
-
-  }
-  onRowEditDelete(member: Member) {
-    this.memberService.delete(member.id);
-
-    this.messageService.add({
-      severity: 'error', 
-      summary: 'Deleted', 
-      detail: 'Member record deleted'
+    this.memberService.update(member).subscribe({
+      next: () => {
+        this.messageService.add({ severity: 'success', summary: 'Saved Successfully', detail: 'Member is updated' });
+      },
+      error: (error) => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Could not update member' });
+        console.error('Error: ' + error);
+      }
     });
   }
 
   onRowEditCancel(member: Member, index: number) {
-    //this.products[index] = this.clonedProducts[product.id as string];
-
-    delete this.clonedMembers['' + member.id];
+    this.members[index] = this.clonedMembers[member.id];
+    delete this.clonedMembers[member.id];
+    this.messageService.add({ severity: 'warn', summary: 'Canceled', detail: 'Changes were canceled' });
   }
+
+  onRowEditDelete(member: Member) {
+    this.confirmationService.confirm({
+      header: 'Delete Confirmation',
+      message: 'Do you want to delete this member?',
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Confirm',
+      rejectLabel: 'Cancel',
+      accept: () => {
+        this.memberService.delete(member.id).subscribe({
+          next: () => {
+            const index = this.members.indexOf(member);
+            this.members.splice(index, 1);
+            this.messageService.add({ severity: 'error', summary: 'Deleted', detail: 'Member is deleted' });
+          },
+          error: (error) => {
+            this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Could not delete member' });
+            console.error('Error: ' + error);
+          }
+        });
+      },
+      reject: () => {
+        this.messageService.add({ severity: 'warn', summary: 'Canceled', detail: 'Delete operation canceled' });
+      }
+    });
+  }
+
 }
